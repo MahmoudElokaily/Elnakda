@@ -1,0 +1,122 @@
+body {
+    background: #08326a;
+    font-family: 'Noto Naskh Arabic', Arial, sans-serif;
+    background-image: url(../img/118952.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body:before{
+        background: #08326a33;
+        content:
+        ' ';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+}
+body{
+    z-index:1;
+}
+.color-white{
+    color:#fff;
+}
+.card-body{
+    font-weight: bold;
+}
+.card.text-center {
+    background: #cba735;
+}
+
+a.card-body {
+    color: #fff;
+}
+#bell {
+    width: 100%;
+    position: relative;
+}
+#bell span {
+    float: right;
+    display: block;
+    font-weight: bold;
+    font-size: 35px;
+    padding-right: 70px;
+    color: green;
+}
+
+#bell svg#Layer_1 {
+    float: right;
+    position: absolute;
+    height: 50px;
+}
+#bell.fire-alarm{
+    color: red;
+}
+
+#bell.fire-alarm span{
+    color: red;
+}
+
+#bell.fire-alarm svg {
+    color: red;
+    animation-name: example;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+.card.alarm {
+    color: #fff;
+    background: red;
+
+}
+.card.alarm  a{
+    font-weight: bold !important;
+    font-size: 30px;
+}
+
+
+@keyframes example {
+    0%   {
+        transform: rotate(0deg)
+    }
+    25%   {
+        transform: rotate(45deg)
+    }
+    75% {
+        transform: rotate(-45deg)
+    }
+    100% {
+        transform: rotate(0deg)
+    }
+}
+.location-header {
+    color: white;
+    text-align: center;
+}
+.close-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .close-icon::before, .close-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 12px;
+    background-color: #000; /* Adjust the color as needed */
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .close-icon::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+.toast-bottom-right {
+    margin-bottom: 60px;
+}
+table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td {
+    text-align: right;
+}
