@@ -1,8 +1,14 @@
 @extends("index")
 @section("aside")
-    <div class="text-center mt-2">
-        <a class="btn btn-success" href="{{route("branch")}}"> اجهزة الفرع </a>
-    </div>
+    @if(\Illuminate\Support\Facades\Auth::user()->role == "admin")
+        <div class="text-center mt-2">
+            <a class="btn btn-success" href="{{route("home")}}"> الصفحة الرئسية  </a>
+        </div>
+    @else
+        <div class="text-center mt-2">
+            <a class="btn btn-success" href="{{route("branch")}}"> الصفحة الرئسية  </a>
+        </div>
+    @endif
 @endsection
 @section("content")
     <div class="container col-md-9 mt-5">

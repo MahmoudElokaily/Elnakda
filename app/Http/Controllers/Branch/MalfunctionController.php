@@ -13,13 +13,15 @@ class MalfunctionController extends Controller
 {
     public function index(Request $request) {
         $id = Auth::user()->role == "admin" ? $request->id : Auth::user()->branch_id;
-        $data["title"] = "اعطال فرع  " . (Auth::user()->branch->name ?? "");
+        $data["branch"] = Branch::findOrFail($id);
+        $data["title"] = "اعطال فرع  " . ($data["branch"]->name ?? "");
         $data["malfunctions"] = Branch::findOrFail($id)->malfunctions ?? [];
         return view("pages.malfunction" , $data);
     }
 
-    public function addMalfunction() {
+    public function addMalfunction(Request $request) {
         $data["title"] = "اضافة عطل";
+        $data["branchId"] = $request->branch;
         return view("pages.add-malfunction" , $data);
     }
 
@@ -35,7 +37,7 @@ class MalfunctionController extends Controller
             "deviceId" => "required",
         ]);
         $data["description"] = $request->des;
-        $data["branchId"] = Auth::user()->branch_id;
+        $data["branchId"] = $request->has("branchId") ? $request->branchId : Auth::user()->branch_id;
         $data["capName"] = Auth::user()->name;
         $malfunction = Malfunction::create($data);
         session()->flash('success', "تم تسجيل العطل بنجاح");

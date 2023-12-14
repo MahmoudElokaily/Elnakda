@@ -1,20 +1,22 @@
 @extends("index")
 @section("aside")
-    @auth
-        @if(\Illuminate\Support\Facades\Auth::user()->role == "admin")
-            <div class="text-center mt-2">
-                <a class="btn btn-success" href="/admin/index.php"> لوحه الاداره </a>
-            </div>
-        @endif
-    @endauth
+    @if(\Illuminate\Support\Facades\Auth::user()->role == "admin")
+        <div class="text-center mt-2">
+            <a class="btn btn-success" href="{{route("home")}}"> الصفحة الرئسية  </a>
+        </div>
+    @else
+        <div class="text-center mt-2">
+            <a class="btn btn-success" href="{{route("branch")}}"> الصفحة الرئسية  </a>
+        </div>
+    @endif
     <div class="text-center mt-2">
-        <a class="btn btn-success" href="{{route("add-device")}}"> اضافة جهاز </a>
+        <a class="btn btn-success" href="{{route("add-device" , ["branch" => $branch->id])}}"> اضافة جهاز </a>
     </div>
     <div class="text-center mt-2">
-        <a class="btn btn-success" href="{{route("malfunction" , ["id" => $branch->id])}}"> عرض جميع الاعطال </a>
+        <a class="btn btn-success" href="{{route("malfunctions" , ["id" => $branch->id])}}"> عرض جميع الاعطال </a>
     </div>
     <div class="text-center mt-2">
-        <a class="btn btn-success" href="{{route("add-malfunction")}}"> ابلاغ عن عطل </a>
+        <a class="btn btn-success" href="{{route("add-malfunction" , ["branch" => $branch->id])}}"> ابلاغ عن عطل </a>
     </div>
 @endsection
 @section("content")

@@ -1,10 +1,16 @@
 @extends("index")
 @section("aside")
+    @if(\Illuminate\Support\Facades\Auth::user()->role == "admin")
+        <div class="text-center mt-2">
+            <a class="btn btn-success" href="{{route("home")}}"> الصفحة الرئسية  </a>
+        </div>
+    @else
+        <div class="text-center mt-2">
+            <a class="btn btn-success" href="{{route("branch")}}"> الصفحة الرئسية  </a>
+        </div>
+    @endif
     <div class="text-center mt-2">
         <a class="btn btn-success" href="{{route("add-device")}}"> اضافة جهاز </a>
-    </div>
-    <div class="text-center mt-2">
-        <a class="btn btn-success" href="{{route("malfunction")}}"> عرض جميع الاعطال </a>
     </div>
     <div class="text-center mt-2">
         <a class="btn btn-success" href="{{route("add-malfunction")}}"> ابلاغ عن عطل </a>
@@ -28,7 +34,7 @@
                     <th scope="row">{{++$index}}</th>
                     <td>{{$malfunction->deviceId}}</td>
                     @if(\Illuminate\Support\Facades\Auth::user()->role == "admin")
-                        <th scope="col">{{$malfunction->capName}}</th>
+                        <th scope="col">{{$malfunction->capName ?? ""}}</th>
                     @endif
                     <td>
                         <a href="{{route("show-malfunction" , ["id" => $malfunction->id])}}" class="btn btn-info"> عرض</a>

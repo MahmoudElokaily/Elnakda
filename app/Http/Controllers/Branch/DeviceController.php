@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Branch;
 
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DeviceController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $data["title"] = "اضافة جهاز";
+        $data["BranchId"] = $request->branch;
         return view("pages.add-device" , $data);
     }
 
@@ -22,7 +24,7 @@ class DeviceController extends Controller
             "carModel" => "required",
             "carType" => "required"
         ]);
-        $data["branchId"] = Auth::user()->branch_id;
+        $data["branchId"] = $request->has("branchId") ? $request->branchId : Auth::user()->branch_id;
         $car = Car::create($data);
         session()->flash('success', "تم تسجيل الجهاز بنجاح");
         return redirect()->back();

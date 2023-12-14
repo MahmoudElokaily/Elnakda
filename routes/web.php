@@ -26,6 +26,8 @@ Route::group(["middleware" => "auth"] , function (){
         Route::post("store" , [HomeController::class , "store"])->name("store-user");
         Route::get("devices-report" , [DeviceController::class , "all"])->name("devices-report");
         Route::get("malfunctions-report" , [MalfunctionController::class , "all"])->name("malfunctions-report");
+        Route::get("add-branch" , [BranchController::class , "addBranch"])->name("add-branch");
+        Route::post("store-branch" , [BranchController::class , "store"])->name("store-branch");
     });
 
     Route::get("/logout" , [LoginController::class , "logout"])->name("logout");
@@ -33,7 +35,7 @@ Route::group(["middleware" => "auth"] , function (){
     Route::post("/branch-car-datatable" , [BranchController::class , "BranchCarsDataTable"])->name("branch-car-datatable");
     Route::get('add-device' , [DeviceController::class , "index"])->name("add-device");
     Route::post('store-device' , [DeviceController::class , "store"])->name("store-device");
-    Route::get('malfunctions' , [MalfunctionController::class , "index"])->name("malfunction");
+    Route::get('malfunctions' , [MalfunctionController::class , "index"])->name("malfunctions");
     Route::get('show-malfunctions' , [MalfunctionController::class , "showMalfunction"])->name("show-malfunction");
     Route::get('add-malfunction' , [MalfunctionController::class , "addMalfunction"])->name("add-malfunction");
     Route::post('store-malfunction' , [MalfunctionController::class , "store"])->name("store-malfunction");
