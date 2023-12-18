@@ -40,12 +40,37 @@
             $('#table').DataTable({
                 dom: 'Blfrtip',
                 buttons: [
-                    'copy','excel', 'print'
-                ],
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        customize: function(win) {
+                            $(win.document.body).css('direction', 'rtl');
+                            $(win.document.body).find('table').find('tr').find('td:last-child, th:last-child').hide();
 
+                            // You can add additional styling as needed
+                        }
+                    }
+                ],
             });
+
+
         });
     </script>
+
 
 @endpush
 @push("css")

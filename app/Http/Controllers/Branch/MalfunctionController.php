@@ -35,6 +35,7 @@ class MalfunctionController extends Controller
     public function store(Request $request){
         $data = $request->validate([
             "deviceId" => "required",
+            "serialNum" => "required",
         ]);
         $data["description"] = $request->des;
         $data["branchId"] = $request->has("branchId") ? $request->branchId : Auth::user()->branch_id;

@@ -23,9 +23,7 @@
             <tr>
                 <th scope="col">م</th>
                 <th scope="col">رقم الجهاز</th>
-                @if(\Illuminate\Support\Facades\Auth::user()->role == "admin")
-                    <th scope="col">اسم الظابط المسئول</th>
-                @endif
+                <th scope="col">رقم السريل</th>
                 <th scope="col">الاجرئات</th>
             </tr>
             <tbody>
@@ -33,9 +31,7 @@
                 <tr>
                     <th scope="row">{{++$index}}</th>
                     <td>{{$malfunction->deviceId}}</td>
-                    @if(\Illuminate\Support\Facades\Auth::user()->role == "admin")
-                        <th scope="col">{{$malfunction->capName ?? ""}}</th>
-                    @endif
+                    <td>{{$malfunction->serialNum}}</td>
                     <td>
                         <a href="{{route("show-malfunction" , ["id" => $malfunction->id])}}" class="btn btn-info"> عرض</a>
                         <a href="{{route("delete-malfunction" , $malfunction->id)}}" class="btn btn-danger">حذف</a>
@@ -54,12 +50,37 @@
             $('#table').DataTable({
                 dom: 'Blfrtip',
                 buttons: [
-                    'copy','excel', 'print'
-                ],
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        customize: function(win) {
+                            $(win.document.body).css('direction', 'rtl');
+                            $(win.document.body).find('table').find('tr').find('td:last-child, th:last-child').hide();
 
+                            // You can add additional styling as needed
+                        }
+                    }
+                ],
             });
+
+
         });
     </script>
+
 
 @endpush
 @push("css")

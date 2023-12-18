@@ -43,17 +43,42 @@
             </div>
 @endsection
 @push("js")
-<script>
-    $(document).ready(function() {
-        $('#table').DataTable({
-            dom: 'Blfrtip',
-            buttons: [
-                'copy','excel', 'print'
-            ],
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        customize: function(win) {
+                            $(win.document.body).css('direction', 'rtl');
+                            $(win.document.body).find('table').find('tr').find('td:last-child, th:last-child').hide();
+
+                            // You can add additional styling as needed
+                        }
+                    }
+                ],
+            });
+
 
         });
-    });
-</script>
+    </script>
+
 
 @endpush
 @push("css")

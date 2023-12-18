@@ -4,19 +4,16 @@
         <div class="text-center mt-2">
             <a class="btn btn-success" href="{{route("home")}}"> الصفحة الرئسية  </a>
         </div>
-    @else
-        <div class="text-center mt-2">
-            <a class="btn btn-success" href="{{route("branch")}}"> الصفحة الرئسية  </a>
-        </div>
     @endif
     <div class="text-center mt-2">
         <a class="btn btn-success" href="{{route("add-device" , ["branch" => $branch->id])}}"> اضافة جهاز </a>
     </div>
+
     <div class="text-center mt-2">
-        <a class="btn btn-success" href="{{route("malfunctions" , ["id" => $branch->id])}}"> عرض جميع الاعطال </a>
+        <a class="btn btn-success" href="{{route("add-malfunction" , ["branch" => $branch->id])}}"> اضافة  عطل </a>
     </div>
     <div class="text-center mt-2">
-        <a class="btn btn-success" href="{{route("add-malfunction" , ["branch" => $branch->id])}}"> ابلاغ عن عطل </a>
+        <a class="btn btn-success" href="{{route("malfunctions" , ["id" => $branch->id])}}"> عرض جميع الاعطال </a>
     </div>
 @endsection
 @section("content")
@@ -25,21 +22,23 @@
                     <thead>
                     <tr>
                         <th scope="col">م</th>
+                        <th scope="col">رقم السيريال</th>
+                        <th scope="col">رقم الجهاز(ID)</th>
                         <th scope="col">رقم الشاسية</th>
-                        <th scope="col">رقم العربية</th>
-                        <th scope="col">رقم الجهاز</th>
-                        <th scope="col">ماركة السيارة</th>
-                        <th scope="col">نوع السيارة</th>
-                        <th scope="col">الاجرئات</th>
+                        <th scope="col">رقم الماتور</th>
+                        <th scope="col">لوحة السيارة</th>
+                        <th scope="col">نوع و ماركة السيارة</th>
+                        <th scope="col">الاجرائات</th>
                     </tr>
                     <tbody>
                     @foreach($cars as $index => $car)
                         <tr>
                             <th scope="row">{{++$index}}</th>
-                            <td>{{$car->chassisNum}}</td>
-                            <td>{{$car->carNum}}</td>
+                            <td>{{$car->serialNum}}</td>
                             <td>{{$car->deviceId}}</td>
-                            <td>{{$car->carModel}}</td>
+                            <td>{{$car->chassisNum}}</td>
+                            <td>{{$car->motorNum}}</td>
+                            <td>{{$car->carNum}}</td>
                             <td>{{$car->carType}}</td>
                             <td><a href="{{route("delete-device" , $car->id)}}" class="btn btn-danger">حذف</a></td>
                         </tr>
@@ -55,10 +54,34 @@
         $('#table').DataTable({
             dom: 'Blfrtip',
             buttons: [
-                'copy','excel', 'print'
-            ],
+                {
+                    extend: 'copy',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    customize: function(win) {
+                        $(win.document.body).css('direction', 'rtl');
+                        $(win.document.body).find('table').find('tr').find('td:last-child, th:last-child').hide();
 
+                        // You can add additional styling as needed
+                    }
+                }
+            ],
         });
+
+
     });
 </script>
 

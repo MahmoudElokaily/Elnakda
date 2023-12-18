@@ -20,6 +20,10 @@
                 <input type="text" name="deviceId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label" style="color: white">رقم السيريال</label>
+                <input type="text" name="serialNum" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label" style="color: white">وسف العطل (اختياري)</label>
                 <textarea class="form-control" name="des" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>

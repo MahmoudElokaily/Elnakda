@@ -6,7 +6,7 @@
            @csrf
            <div class="mb-3">
                <label for="exampleInputEmail1" class="form-label" style="color: white">الاسم</label>
-               <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mahmoud">
+               <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
            </div>
            <div class="mb-3">
                <label for="exampleInputPassword1" class="form-label" style="color: white">الرقم السري</label>

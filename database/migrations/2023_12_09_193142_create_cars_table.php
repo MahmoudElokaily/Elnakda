@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string("chassisNum");
             $table->string("carNum");
             $table->string("deviceId");
-            $table->string("carModel");
             $table->string("carType");
-            $table->integer("branchId");
+            $table->string("branchId");
+            $table->string("serialNum");
+            $table->string("motorNum");
             $table->timestamps();
         });
     }

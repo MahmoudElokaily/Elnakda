@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('malfunctions', function (Blueprint $table) {
             $table->id();
             $table->string("deviceId");
-            $table->text("description");
+            $table->text("description")->nullable();
             $table->string("branchId");
-            $table->string("capName");
+            $table->string("serialNum");
             $table->timestamps();
             $table->softDeletes();
         });

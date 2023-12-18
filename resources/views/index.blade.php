@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{-- datatable --}}
         <link href="./plugins/DataTables/datatables.min.css" rel="stylesheet">
+        {{-- fav icon  --}}
+        <link rel="shortcut icon" href="img/favicon.ico">
 
         @stack("css")
         <!-- Bootstrap CSS -->
@@ -54,7 +56,7 @@
                 @endauth
             </div>
             <div class="col-md-9 mt-5">
-                <h2 class="text-center color-white mb-5">مديريه امن القاهره</h2>
+                <h2 class="text-center color-white mb-3">قطاع امن القاهره</h2>
                 @include("inc.header")
                 @section("content")
                 @show

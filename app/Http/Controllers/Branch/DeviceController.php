@@ -21,8 +21,9 @@ class DeviceController extends Controller
             "chassisNum" => "required",
             "carNum" => "required",
             "deviceId" => "required",
-            "carModel" => "required",
-            "carType" => "required"
+            "carType" => "required",
+            "serialNum" => "required",
+            "motorNum" => "required",
         ]);
         $data["branchId"] = $request->has("branchId") ? $request->branchId : Auth::user()->branch_id;
         $car = Car::create($data);

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Malfunction extends Model
 {
     use HasFactory;
-    protected $fillable = ["deviceId" , "description" , "branchId" , "capName"];
+    protected $fillable = ["deviceId" , "description" , "branchId" , "serialNum"];
 
     public function branch()
     {

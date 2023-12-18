@@ -16,20 +16,24 @@
             <legend style="color: white">اضافة جهاز</legend>
             @csrf
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label" style="color: white">رقم الشاسية</label>
-                <input type="text" name="chassisNum" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <label for="exampleInputEmail1" class="form-label" style="color: white">رقم السيريال</label>
+                <input type="text" name="serialNum" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             </div>
-          <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label" style="color: white">رقم عربية</label>
-                <input type="text" name="carNum" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-            </div>
-          <div class="mb-3">
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label" style="color: white">رقم الجهاز</label>
                 <input type="text" name="deviceId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label" style="color: white">رقم الشاسية</label>
+                <input type="text" name="chassisNum" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label" style="color: white">رقم الماتور</label>
+                <input type="text" name="motorNum" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            </div>
           <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label" style="color: white">ماركة السيارة</label>
-                <input type="text" name="carModel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <label for="exampleInputEmail1" class="form-label" style="color: white">لوحة السيارة</label>
+                <input type="text" name="carNum" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label" style="color: white">نوع السيارة</label>
